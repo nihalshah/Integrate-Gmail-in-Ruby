@@ -8,3 +8,5 @@ The whole point behind this is that once the user has logged in, if the user get
 
 I made this in order to support the back end team of a start-up I interned in, working with RoR. It makes it easier for them to be notified of a new email, rather than to switch repeatedly between Gmail and any RoR page.
 
+The relevent files in the view are : gmail.html.erb , userform.html.erb.
+The relevent actions in the controller are : gmail, authgmail, display, updategmail, logoutgmail, userform, checksession
