@@ -1,0 +1,37 @@
+<h3 style="text-align:center">
+	You have successfully logged in!
+</h3>
+<script type="text/javascript">
+var intervalid = null;
+function func(){
+	$.ajax({
+		url:'/updategmail',
+		success:function(result){
+			 if(result!="0")
+				humane.log("You Have " + result + " Unread Emails");
+			
+		}
+	});
+	
+}
+function wrap(){
+	intervalid = setInterval(function(){func()}, 60000);
+}
+function logouts(){
+	if (intervalid!= null)
+		clearInterval(intervalid);
+	$.ajax({
+		url:'/logoutgmail',
+		success:function(result){
+			$(".wrap").html(result);
+		}
+	});
+}
+
+</script>
+<center>
+<button onclick="logouts()"  class='btn btn-primary '> Logout</button>
+<button onclick="wrap()"  class='btn btn-primary '> Check Email</button>
+
+</center>
+

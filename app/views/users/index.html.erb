@@ -1,0 +1,40 @@
+<style>
+ #foo {
+ 	left:78%;
+ 	top:100%;
+
+  }
+  .btn1{
+  	
+  	 right: 0;
+  	position: fixed;
+  }
+
+
+</style>
+<script type="text/javascript">
+function checksession(){
+	$.ajax({
+		url:"/checksession",
+		success:function(result){
+			$(".wrap").html(result);
+		}
+	});
+}
+
+</script>
+
+<div class="dropdown"  >
+  <button onclick = "checksession()"class="btn btn1 btn-default" type="button" id="dropdownMenu1 " data-toggle="dropdown">
+  	    <span class="caret"></span>
+    Dropdown
+  </button>
+  
+<ul class="dropdown-menu wrap" id = "foo" role="menu" aria-labelledby="drop1">
+</ul>
+
+
+</script>
+<h1>Home</h1>
+</body>
+</html>

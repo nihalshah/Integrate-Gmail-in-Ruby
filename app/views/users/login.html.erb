@@ -1,0 +1,91 @@
+<div id = "er">
+<% if flash[:status] == false %>
+<h5 style="color:red"> <%= flash[:alert] %> </h5>
+<% end %>
+</div>
+<div style = "color:red"id="error">
+</div>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#main").hide();
+	$("#main").fadeIn(1500);
+});
+
+</script>
+<div id = "main">
+<h1> Login Here </h1>
+
+
+
+<%= form_for :log , url: {action: "validate"}, html: {id: "log"} do |f| %>
+	<div>
+		<%= f.label :username %>
+		<%= f.text_field :username %>
+	</div>
+
+	<div>
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+	</div>
+
+<div class="actions" style = " margin-left:590px; margin-right:590px; margin-top:5px">
+	    <%= f.submit "Login", class:'btn btn-primary btn-large btn-block', type:"button" %>
+	</div>
+
+
+<% end %>
+</div>
+<script>
+$(".actions").click(function(){
+
+	if ($("#log_username").val() == "" || $("#log_password").val() == "" )
+	{
+		var blank = "Please check if any field is blank or if Password is Wrong";
+		$("#log_password").val("");
+
+		if ($("#log_username").val() == "")
+		{
+			var pass = document.getElementById("log_username");
+			pass.style.borderColor = "red";
+		}
+		 else 
+		{
+			var pass = document.getElementById("log_username");
+			pass.style.borderColor = "#cccccc";
+		}
+
+		if ($("#log_password").val() == "")
+		{
+			var pass = document.getElementById("log_password");
+			pass.style.borderColor = "red";
+		}
+		 else 
+		{
+			var pass = document.getElementById("log_password");
+			pass.style.borderColor = "#cccccc";
+		}
+		$("#er").html("");
+		$("#error").html(blank);
+
+	}
+	else
+	{
+		$("#log").submit();
+	}
+});
+
+</script>
+<!-- 
+<h3> Click here to go to Register Page </h3>
+	<button>
+		<%= link_to "Register Page" , register_path %>
+	</button>
+
+<h3> Click here to go to Home Page </h3>
+<button>
+	<%= link_to "Home Page" , '/' %>
+</button>	
+ -->

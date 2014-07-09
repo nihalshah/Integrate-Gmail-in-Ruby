@@ -1,0 +1,23 @@
+
+<% if flash[:status] == true %>
+	<% flash[:alert] %>
+<% end %>
+
+
+
+<h1> Welcome!</h1>
+
+	<div>
+		<h3> First name :   <%= @user.firstname %> </h3>
+		
+		<h3> Last name :   <%= @user.lastname %></h3>
+		
+	</div>
+<div  style = " margin-left:600px; margin-right:600px">
+		
+	<%= button_to "Edit" , edit_path, class:'btn btn-primary btn-large btn-block'  %>
+
+
+	<%= button_to "Logout" , logout_path , class:'btn btn-danger btn-large btn-block' %>
+</div>
+	

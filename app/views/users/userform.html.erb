@@ -1,0 +1,85 @@
+<style>
+ #foo {
+ 	left:78%;
+ 	top:100%;
+
+  }
+  .btn1{
+  	
+  	 right: 0;
+  	position: fixed;
+  }
+</style>
+
+<div id = "er">
+<% if flash[:status] == false %>
+<h5 style="color:red"> <%= flash[:alert] %> </h5>n
+<% end %>
+</div>
+<div style = "color:red"id="error">
+</div>
+<form>
+Username<br>
+ <input id = "log_username" type="text" name="username"><br>
+ Password <br>
+ <input id = "log_password" type="password" name="password">
+</form>
+<center>
+ <button  onclick = "logincheck()" class ='btn btn-primary btn-block userform'> Login </button>
+ </center>
+</ul>
+</div>
+ <script>
+function logincheck(){
+	
+
+	if ($("#log_username").val() == "" || $("#log_password").val() == "" )
+	{
+		var blank = "Wrong Credentials";
+		$("#log_password").val("");
+
+		if ($("#log_username").val() == "")
+		{
+			var pass = document.getElementById("log_username");
+			pass.style.borderColor = "red";
+		}
+		 else 
+		{
+			var pass = document.getElementById("log_username");
+			pass.style.borderColor = "#cccccc";
+		}
+
+		if ($("#log_password").val() == "")
+		{
+			var pass = document.getElementById("log_password");
+			pass.style.borderColor = "red";
+		}
+		 else 
+		{
+			var pass = document.getElementById("log_password");
+			pass.style.borderColor = "#cccccc";
+		}
+		$("#er").html("");
+		$("#error").html(blank);
+
+	}
+	else
+	{
+		var credentials = $("form").serialize();
+		$.ajax({
+			url:'/authgmail',
+			data: credentials,
+			type:"POST",
+			success:function(response){
+				$(".wrap").html(response);
+			},
+			error:function(){
+				alert("asd");
+			}
+
+		});
+		
+	}
+
+}
+</script>

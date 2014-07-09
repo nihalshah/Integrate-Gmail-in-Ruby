@@ -1,0 +1,118 @@
+<% if flash[:status] == false %>
+	<% flash[:alert].each do |error| %>
+		<p style = "color:red"> <%= error %> </p>
+	<% end %>
+<% end %>
+
+
+<div style = "color:red"id="error">
+</div>
+
+<h2> Your Information </h2>
+
+
+<%= form_for @user, url: {action: "update"} do |f| %>
+
+	<div >
+	    <%= f.label :firstname %>
+	    <%= f.text_field :firstname %>
+	</div>
+
+	<div >
+	    <%= f.label :lastname %>
+	    <%= f.text_field :lastname %>
+	</div>
+
+
+	<div>
+	    <%= f.label :username %>
+	    <%= f.text_field :username %>
+	</div>
+
+	<div>
+	    <%= f.label  :password %> 
+	    <%= f.password_field :password %>
+	</div>
+
+	<div>
+	    <%= f.label :password_confirmation %>
+
+	    <%= f.password_field :password_confirmation %>
+	</div>
+
+
+	<div class = "actions"style = " margin-left:590px; margin-right:590px">
+	    <%= f.submit "Update" , class:'btn btn-primary btn-large btn-block', type:"button"%>
+	</div>
+
+<% end %>
+
+
+<script>
+$(".actions").click(function(){
+
+
+		if( $("#user_password_confirmation").val() != $("#user_password").val() ||
+			$("#user_firstname").val() == "" ||
+			$("#user_lastname").val() == "" ||
+			$("#user_username").val() == "" ||
+			$("#user_password_confirmation").val() == "" ||
+			$("#user_password").val() == ""
+			)
+		{
+			
+			var blank = "Please check if any field is blank or if Passwords don't match";
+			$("#user_password").val("");
+			$("#user_password_confirmation").val("");
+			var pass = document.getElementById("user_password");
+			var pass1 = document.getElementById("user_password_confirmation");
+			pass.style.borderColor = "red";
+			pass1.style.borderColor = "red";
+		
+			
+			if ($("#user_firstname").val() == "")
+			{
+				var pass = document.getElementById("user_firstname");
+				pass.style.borderColor = "red";
+			}
+			 else 
+			{
+				var pass = document.getElementById("user_firstname");
+				pass.style.borderColor = "#cccccc";
+			}
+
+			 if ($("#user_lastname").val() == "")
+			{
+				var pass = document.getElementById("user_lastname");
+				pass.style.borderColor = "red";
+			}
+			 else 
+			{
+				var pass = document.getElementById("user_lastname");
+				pass.style.borderColor = "#cccccc";
+			}
+			 if ($("#user_username").val() == "")
+			{
+				var pass = document.getElementById("user_username");
+				pass.style.borderColor = "red";
+			}
+			 else 
+			{
+				var pass = document.getElementById("user_username");
+				pass.style.borderColor = "#cccccc";
+			}
+			$("#error").html(blank);
+
+				
+		}
+		else
+		{
+			//var datastr = $("#new_user").serialize();
+			$("#edit_user").submit();
+		}
+
+});
+</script>
+<div style = " margin-left:590px; margin-right:590px">
+	<%= link_to "Back" , show_path , class:'btn btn-danger btn-large btn-block'%>
+</div>	
