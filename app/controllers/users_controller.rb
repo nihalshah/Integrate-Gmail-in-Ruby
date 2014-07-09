@@ -155,6 +155,9 @@ end
 def gmail
 end
 
+#######################################
+# Authenticates the user's credentials
+#######################################
 def authgmail
 if session[:gmail_us].nil?
 		
@@ -183,6 +186,9 @@ if session[:gmail_us].nil?
 end
 end
 
+#####################################
+# Checks if there are any new emails
+#####################################
 def updategmail
 
 	@gmail = Gmail.new(session[:gmail_us],session[:gmail_pa])
@@ -190,7 +196,9 @@ def updategmail
 	render :text => @msg
 	@gmail.logout
 end
-
+#####################################
+# Logout the user
+#####################################
 
 def logoutgmail
 	
@@ -203,7 +211,9 @@ end
 def userform
 	
 end
-
+##########################################
+# Checks if the user is already logged in
+##########################################
 def checksession
 	if session[:gmail_us].nil?
 		render "userform", :layout =>false
@@ -213,3 +223,4 @@ def checksession
 end
 
 end
+
