@@ -1,1 +1,10 @@
+Hello!
+This app is actually my experiment working with RoR, hence I have a lot of different stuff in it.
+
+Coming to Integrating Gmail within Ruby : 
+The Idea behind this is that there'll be a button, having a dropdown form, where the user can log in, using his/her gmail id and password
+The Ruby Gmail Gem is being used to make a connection with the Gmail Servers in Order to authenticate the login form.
+The whole point behind this is that once the user has logged in, if the user gets a new email in his account, he'll get a push notification saying so.
+
+I made this in order to support the back end team of a start-up I interned in, working with RoR. It makes it easier for them to be notified of a new email, rather than to switch repeatedly between Gmail and any RoR page.
 
